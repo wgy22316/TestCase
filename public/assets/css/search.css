@@ -1,0 +1,107 @@
+
+
+.search_box { 
+margin-left: 100px;
+width: 201px; 
+height: 31px; 
+background: url(../../assets/img/bg_search_box.gif); 
+} 
+.search_box .s { 
+float: left; 
+padding: 0; 
+margin: 6px 0 0 6px; 
+border: 0; 
+width: 159px; 
+background: none; 
+font-size: .8em; 
+} 
+.search_box .go { 
+float: right; 
+margin: 3px 4px 0 0; 
+} 
+
+
+/*用例*/
+.search_re {
+	float:left;
+	margin:10px 0 0 10px;
+	/*border:1px solid #4b8df8;*/
+	width:100%;
+	min-width:400px;
+	min-height:30px;
+}
+.search_one {
+	float:left;
+	margin:10px 0 0 10px;
+	/*border:1px solid #4b8df8;*/
+	width:100%;
+	min-width:400px;
+	min-height:30px;
+}
+.case_name{
+	float:left;
+	/*margin:10px 0 0 10px;*/
+	/*border:1px solid #4b8df8;*/
+	width:22%;
+	min-width:90px;
+	min-height:35px;
+}
+.case_v{
+	float:left;
+	/*margin:10px 0 0 10px;*/
+	/*border:1px solid #4b8df8;*/
+	width:73%;
+	min-width:280px;
+	min-height:30px;
+}
+.case_v .case_road{
+	float:left;
+	/*margin:10px 0 0 10px;*/
+	/*border:1px solid #4b8df8;*/
+	width:100%;
+	min-width:270px;
+	min-height:35px;
+}
+ .case_one{
+	float:left;
+	/*margin:10px 0 0 10px;*/
+	/*border:1px solid #4b8df8;*/
+	width:20%;
+	min-width:80px;
+	min-height:30px;
+}
+
+
+
+/*详情*/
+.detail_re {
+	float:left;
+	margin:10px 0 0 10px;
+	/*border:1px solid #4b8df8;*/
+	width:100%;
+	min-width:400px;
+	min-height:30px;
+}
+.detail_one {
+	float:left;
+	/*border:1px solid #4b8df8;*/
+	width:100%;
+	min-width:420px;
+	min-height:30px;
+}
+.detail_v{
+	float:left;
+	/*margin:10px 0 0 10px;*/
+	/*border:1px solid #4b8df8;*/
+	width:15%;
+	min-width:70px;
+	min-height:30px;
+}
+.detail_v .detail_road{
+	float:left;
+	/*margin:10px 0 0 10px;*/
+	/*border:1px solid #4b8df8;*/
+	width:100%;
+	min-width:270px;
+	min-height:35px;
+}

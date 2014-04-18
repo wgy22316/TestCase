@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.0.2
+Version: 1.5.4
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>TestCase</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<meta name="MobileOptimized" content="320">
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->          
+	<link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<!-- END GLOBAL MANDATORY STYLES -->
+	<!-- BEGIN PAGE LEVEL PLUGIN STYLES --> 
+	<!--<link href="../../plugins/gritter/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+	<link href="../../plugins/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css"/>--> 
+	<!-- END PAGE LEVEL PLUGIN STYLES -->
+	<!-- BEGIN THEME STYLES --> 
+	<script src="../../plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="../../plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+	<script src="../../plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>   
+	<script src="../../assets/zhoujx/menu.js" type="text/javascript"></script> 
+	<script src="../../assets/zhoujx/home.js" type="text/javascript"></script> 
+	<script src="../../plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+	<script src="../../plugins/jquery.cookie.min.js" type="text/javascript"></script>
+	<script src="../../scripts/app.js" type="text/javascript"></script>
+
+	<link href="../../css/pages/home.css" rel="stylesheet" type="text/css"/>
+
+	<link href="../../css/style-metronic.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/plugins.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/pages/tasks.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="../../css/custom.css" rel="stylesheet" type="text/css"/>
+	<!-- END THEME STYLES -->
+	<link rel="shortcut icon" href="favicon.ico" />
+	<!-- END PAGE LEVEL SCRIPTS -->  
+	<script>
+		jQuery(document).ready(function() {   
+		//start get the menu ajax
+
+			$.ajax({ 
+		        type: "GET",
+		        url: "getuser", 
+		        dataType: "json", 
+		        success: function(array){ 
+		            if(array['state']=="success"){
+		  			$("#username").text(array['username']);
+		  			 	Home.init();//load menu
+		            }else{
+					    alert(array['error']);
+			   		}
+		   				
+		        }
+			}); 
+			$.ajax({ 
+		        type: "GET",
+		        url: "getmodule", 
+		        dataType: "json", 
+		        success: function(array){ 
+		            if(array['state']=="success"){
+		  				 Home.Module(array);//load menu
+		            }else{
+					    alert(array['error']);
+			   		}
+		   				
+		        }
+			}); 
+
+			$.ajax({ 
+		        type: "GET",
+		        url: "menu", 
+		        dataType: "json", 
+		        success: function(array){ 
+		            if(array['state']=="success"){
+		  				 Menu.init(array);//load menu
+		            }else{
+					    alert(array['error']);
+			   		}
+		   				
+		        }
+			}); 
+		});
+	</script>
+	<script>
+		jQuery(document).ready(function() {
+		   App.init(); // initlayout and core plugins
+		});
+	</script>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed"><!-- style="overflow-y:hidden">-->
+	<!-- BEGIN HEADER -->   
+<div class="homebgcolor">
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+		<!-- BEGIN TOP NAVIGATION BAR -->
+		<div class="header-inner">
+			<!-- BEGIN TOP NAVIGATION MENU -->
+
+				<div style="width:200px;float:left;">
+					<img src="../../img/logo-big.png"/>
+				</div>
+
+
+				<div id="module" style="min-width:40px;float:left;">
+
+
+											
+
+				</div>
+
+
+
+			<ul class="nav navbar-nav pull-right" >
+
+			<!-- END TOP NAVIGATION MENU -->
+
+				<!-- BEGIN USER LOGIN DROPDOWN -->
+				<li class="dropdown user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+						<p  align="left"style="color:black">欢迎您：
+							<font size="5"><span id="username" ></span><i class="fa fa-angle-down"></i></font>
+						</p>
+					</a>
+					<ul class="dropdown-menu" >
+						<!--<li><a href="../../user/User/infomation" target="page_iframe"><i class="fa fa-user"></i>个人信息</a></li>-->
+						<li><a href="../../user/User/modpass" target="page_iframe"><i class="fa fa-warning"></i> 修改密码</a></li>
+						<!--<li><a href="../../user/User/note" target="page_iframe"><i class="fa fa-tasks"></i> 我的备忘录 </a></li>-->
+						<li class="divider"></li>
+						<li><a href="#" id="loginout"><i class="fa fa-key"></i>安全退出</a></li>
+					</ul>
+				</li>
+				<!-- END USER LOGIN DROPDOWN -->
+			</ul>
+			<!-- END TOP NAVIGATION MENU -->
+		</div>
+		<!-- END TOP NAVIGATION BAR -->
+	</div>
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->        
+			<ul  id="start_menu" class="page-sidebar-menu">
+				<li>
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					<div style="margin-top:28px"></div>
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+				</li>
+
+
+
+
+<!--         start menu                  -->
+
+
+
+
+
+
+
+<!--     end menu           -->
+
+
+
+
+
+
+
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+
+		<!-- END SIDEBAR -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		<!-- BEGIN PAGE -->
+		<!-- 解决iframe与外面div的边距问题 ,添加了padding-->
+		<div class="page-content"  style="padding:1px">
+			<!--将height改为900，建议分辨率在1280 * 1024以上 -->
+			<iframe id="page_iframe"  src="../../case/testcase/showallversionofcase" class="home home-content iframe" name="page_iframe" frameborder="no" width="100%" style="margin-top:40px"height="900px"></iframe> 
+		</div>
+		<!-- END PAGE -->
+
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	<div class="footer">
+		<div class="footer-inner" >
+			2013 &copy;chenghan  wugy songgl  zhoujx
+		</div>
+		<!--取消要页尾回到头部的功能 -->
+		<!--
+		<div class="footer-tools">
+			<span class="go-top">
+			<i class="fa fa-angle-up"></i>
+			</span>
+		</div>
+		-->
+	</div>
+</div>
+</body>
+<!-- END BODY -->
+</html>

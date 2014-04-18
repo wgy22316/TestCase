@@ -1,0 +1,229 @@
+<html>
+<head>
+	<!-- 框架的css ****************************************************************************************-->
+	<!-- 这个css是显示前后翻页图标的 -->
+	<link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	
+	<link href="../../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="../../plugins/select2/select2_metro.css" /> -->
+	<link rel="stylesheet" href="../../plugins/data-tables/DT_bootstrap.css" />
+	<link href="../../css/style-metronic.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/plugins.css" rel="stylesheet" type="text/css"/>
+	<!-- 下面的主题修改了页面的背景颜色-->
+	<link href="../../css/themes/light.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="../../css/custom.css" rel="stylesheet" type="text/css"/>
+	
+	<link rel="shortcut icon" href="favicon.ico" />
+	<!-- *********************************************************************************************** -->
+	<!-- jquery以及整体bootstrasp框架的js -->	
+	<script src="../../plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="../../plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>    
+	<script src="../../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!--<link rel="stylesheet" type="text/css" href="../../plugins/select2/select2.css">-->
+<!--	<script type="text/javascript" src="../../plugins/select2/select2.js"></script>-->
+<!--	<script type="text/javascript" src="../../scripts/app.js"></script>-->
+<!-- 	<script src="../../plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script> -->
+<!-- 	<script src="../../plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> -->
+<!-- 	<script src="../../plugins/jquery.blockui.min.js" type="text/javascript"></script>   -->
+	    <script src="../../plugins/jquery.cookie.min.js" type="text/javascript"></script> 
+<!-- 	<script src="../../plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script> -->
+	<!-- datatable的js -->
+	<script type="text/javascript" src="../../plugins/select2/select2.min.js"></script>
+
+	<script type="text/javascript" src="../../plugins/data-tables/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="../../plugins/data-tables/DT_bootstrap.js"></script>
+	
+	<script type="text/javascript" src="../../scripts/jquery.jeditable.js"></script>
+	<script type="text/javascript" src="../../assets/chengh/showCaseByTask.js"></script>   
+	<script src="../../scripts/app.js" type="text/javascript"></script>
+	<script src="../../assets/chengh/table-editable.js" type="text/javascript"></script> 
+
+	<script>
+		jQuery(document).ready(function() {   
+		   App.init(); 
+		  TableEditable.init();   
+		   $('#submitbtn').live('click',function(){
+		   		var gameVersion = $('#gameVersion').val();
+		   		if('请输入要创建的游戏版本' == gameVersion || null == gameVersion)
+		   		{
+		   			alert("请输入版本号!!!");
+		   			return;
+		   		}
+			   	$.post("createVersion",{"gameVersion":gameVersion},function(data,status){
+			   		if(data[0] != -1)
+			   		{
+			   			// location.href = "showallottasks?game_v_id="+data[0];
+			   			//.options[selectObj.length] = new Option("Label", "Value");
+			   			var selectObj = $('#versionChoose');
+			   			$("#versionChoose option:first").remove();
+			   			selectObj.prepend("<option value="+data[0]+">"+gameVersion+"</option>"); 
+			   			selectObj.prepend("<option value=''>选择要修改的任务所属游戏版本</option>")
+			   			//selectObj.options[selectObj.length] = new Option(gameVersion,data[0]);
+			   			selectObj.val(data[0]);
+			   			$('#gameVersion').val('');
+			   		}
+			   		else
+			   		{
+			   			alert('版本已存在，请输入未创建的版本号');
+			   		}
+			   	},"json");
+		   });
+
+		   $('#surebtn').live('click',function(){
+		   		var game_v_id = $('#versionChoose').val();
+		   		if('' == game_v_id || null == game_v_id)
+		   		{
+		   			alert("请选择游戏版本!!!");
+		   			return;
+		   		}
+		   		$.get("showAllotTasks",{"game_v_id":game_v_id},function(data,status){
+		   			if(status == 'success')
+		   			{
+		   				if(!$('#showallottasks').is(":visible"))
+						{
+							$('#showallottasks').show();
+						}
+						$('#showCaseByTask').hide();
+						//console.info($('#sample_editable_1 tbody'));
+		   				$('#tableObj').html("");
+		   				// return ;
+		   				$('#taskTitle').text('<?php echo $gameName?>'+$('#versionChoose').find("option:selected").text()+" 版本任务列表");
+		   				$('#tableObj').append('<table id="sample_editable_1"  class="table table-striped table-hover table-bordered"><thead><tr><td>任务名</td><td>任务详细信息</td><td>测试者</td><td>taskId</td><td>查看任务</td><td>编辑</td><td>删除</td></tr></thead><tbody></tbody></table>');
+		  		 		TableEditable.createTable(data,game_v_id);
+		   			}
+		   		},"json");
+	   		});
+
+
+		});
+
+
+
+	</script>
+<style type="text/css">
+.www {height:100%; background:#ffffff; position:absolute; width:100%;} 
+</style>
+</head>	
+<body>
+<div class="www">
+		<h3 class="page-title">
+						<?php echo $gameName?>测试任务创建分配及统计 <small>form zwcs</small>
+		</h3>
+
+<div class="portlet box blue">
+<div class="portlet-title">
+	<div class="caption" id = title><i class="fa fa-globe"></i><?php echo $gameName?>游戏版本创建及版本下任务查看</div>
+
+</div>
+	<div class="portlet-body">
+	
+			<div style="float:left">
+				<input type="text" class="form-control" style="width:200px" id="gameVersion" value="请输入要创建的游戏版本" onmouseout="this.style.borderColor=''" onFocus="if (value =='请输入要创建的游戏版本'){value =''}" onBlur="if (value ==''){value='请输入要创建的游戏版本'}"/>
+			</div>
+			<div style="float:left">
+			<button  id="submitbtn" type="button"  class="btn blue"  data-dismiss="modal" >创建</button>
+			</div>
+
+			<div style="float:left">
+				<select id="versionChoose" value="" class="form-control" style="width:250px;margin-left:1px">
+					<option value="">选择要修改的任务所属游戏版本</option>
+					<?php
+						foreach ($game_version as $k) {
+							echo "<option value='".$k[0]."'>".$k[1]."</option>";
+						}
+					?>
+				</select>
+			</div>
+			<div style="float:left">
+				<button id='surebtn' type="button" class='btn red' data-dismiss="modal">查看</button>
+			</div>
+
+	</div>
+</div>		
+<!-- <br></br>
+<div class="portlet box blue">
+	<div class="portlet-title">
+		<div class="caption" id = title><i class="fa fa-globe"></i><?php echo $gameName?>游戏版本选择</div>
+
+	</div>
+	<div class="portlet-body">
+		
+			<div style="float:left">
+				<select id="versionChoose" value="" class="form-control" style="width:250px;margin-left:1px">
+					<option value="">选择要修改的任务所属游戏版本</option>
+					<?php
+						foreach ($game_version as $k) {
+							echo "<option value='".$k[0]."'>".$k[1]."</option>";
+						}
+					?>
+				</select>
+			</div>
+			<div style="float:left">
+				<button id='surebtn' type="button" class='btn red' data-dismiss="modal">查看</button>
+			</div>
+	</div>
+</div>
+<br></br> -->
+<div id="showallottasks" style="display:none">
+
+	<div class="portlet box blue">
+		<div class="portlet-title">
+			<div class="caption" id = 'taskTitle'>任务列表</div>
+
+			<div class='tools'>
+				<a href="javascript:;" class="collapse"></a>
+			</div>
+		</div>
+	
+	<div class="portlet-body">
+		<div class="table-toolbar">
+			<div class="btn-group">
+				<button id="sample_editable_1_new" class="btn green">
+				 新建任务 <i class="fa fa-plus"></i>
+				</button>
+			</div>
+
+		</div>
+	
+		<div id='tableObj'>
+		</div>
+
+	</div>
+
+</div>
+</div>
+<!-- <br></br> -->
+<div id="showCaseByTask" style="display:none">
+	<div class="portlet box blue">
+		<div class="portlet-title">
+			<div class="caption" id = 'casesTitle'>案例列表</div>
+
+			<div class='tools'>
+				<a href="javascript:;" class="collapse"></a>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<div class="table-toolbar">
+				<div class="btn-group">
+					<a class="btn blue"  id="reload">
+					<i class="fa fa-refresh"></i>
+					刷新
+					</a>
+				</div>
+
+			</div>
+		
+			<div id='tableObj2'>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<html>
+<head>
+	<!-- 框架的css ****************************************************************************************-->
+	<!-- 这个css是显示前后翻页图标的 -->
+	<link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	
+	<link href="../../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="../../plugins/select2/select2_metro.css" />
+	<link rel="stylesheet" href="../../plugins/data-tables/DT_bootstrap.css" />
+	<link href="../../css/style-metronic.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/plugins.css" rel="stylesheet" type="text/css"/>
+	<!-- 下面的主题修改了页面的背景颜色-->
+	<link href="../../css/themes/light.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="../../assets/css/custom.css" rel="stylesheet" type="text/css"/>
+	
+	<link rel="shortcut icon" href="favicon.ico" />
+	<!-- *********************************************************************************************** -->
+	<!-- jquery以及整体bootstrasp框架的js -->	
+	<script src="../../plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="../../plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>    
+	<script src="../../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- 	<script src="../../plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script> -->
+<!-- 	<script src="../../plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> -->
+<!-- 	<script src="../../plugins/jquery.blockui.min.js" type="text/javascript"></script>   -->
+<!-- 	<script src="../../plugins/jquery.cookie.min.js" type="text/javascript"></script> -->
+<!-- 	<script src="../../plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script> -->
+	<!-- datatable的js -->
+<!-- 	<script type="text/javascript" src="../../plugins/select2/select2.min.js"></script> -->
+	<script type="text/javascript" src="../../plugins/data-tables/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="../../plugins/data-tables/DT_bootstrap.js"></script>
+	
+	<script type="text/javascript" src="../../scripts/jquery.jeditable.js"></script>
+	<!-- // <script type="text/javascript" src="../../scripts/special_privilege.js"></script> -->
+	<script type="text/javascript" src="../../assets/songgl/special_privilege.js"></script>
+	<style type="text/css">
+		.www {height:100%; background:#ffffff; position:absolute; width:100%;} 
+	</style>
+</head>	
+<body>
+<div class="www">
+		<h3 class="page-title">
+						个人特权分配 <small>form zwcs</small>
+		</h3> 
+<input type='text' style='display: none' value=<?php echo $user_id?> id='user_id'/>
+
+<div class="portlet box blue">
+	<div class="portlet-title">
+		<div class="caption"><i class="fa fa-reorder"></i>查询用户&授权</div>
+	</div>
+	<div class="portlet-body">
+		<div class="input-group input-large">
+			<input  id="user_id_input" type="text" class="form-control" placeholder="请输入要授权的用户工号或姓名">
+			<span class="input-group-btn">
+			<!--<button class="btn blue" type="button" id="user_id_btn">查询</button>-->
+			<button class="btn green" type="button" id="modify">修改</button>
+			</span>
+		</div>
+		<span id="targetName_span"></span>
+	</div>
+</div>
+
+
+<div class="portlet blue box">
+	<div class="portlet-title">
+		<div class="caption"><i class="fa fa-cogs"></i>个人特殊权限</div>
+	</div>
+	<div class="portlet-body" id="special_content_div">
+		<div>
+		</div>
+	</div>
+</div>
+
+</div>
+</body>
+</html>

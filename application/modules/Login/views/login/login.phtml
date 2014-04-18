@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.0.2
+Version: 1.5.4
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>Login</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<meta name="MobileOptimized" content="320">
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->          
+	<link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<script src="../../plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<!-- END GLOBAL MANDATORY STYLES -->
+	<!-- BEGIN PAGE LEVEL STYLES --> 
+	<!--<link rel="stylesheet" type="text/css" href="../../plugins/select2/select2_metro.css" />-->
+	<!-- END PAGE LEVEL SCRIPTS -->
+	<!-- BEGIN THEME STYLES --> 
+	<link href="../../css/style-metronic.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="../../css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
+	<!--<link href="../../css/custom.css" rel="stylesheet" type="text/css"/>-->
+	<script src="../../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../assets/zhoujx/zhoulogin.js" type="text/javascript"></script>
+	<!-- END THEME STYLES -->
+	<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!-- BEGIN BODY -->
+<body class="login">
+	<!-- BEGIN LOGO -->
+	<div class="logo">
+		<img src="../../img/logo-big.png"  alt="" />
+	</div>
+	<!-- END LOGO -->
+	<!-- BEGIN LOGIN -->
+	<div class="content">
+		<!-- BEGIN LOGIN FORM -->
+		<form id="loginform" class="login-form" action="#" method="post">
+			<h3 class="form-title"></h3>
+			<div class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<span>Enter any username and password.</span>
+			</div>
+			<div class="form-group">
+				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+				<label class="control-label visible-ie8 visible-ie9">用户名</label>
+				<div class="input-icon">
+					<i class="fa fa-user"></i>
+					<input class="form-control placeholder-no-fix" id="user_id" type="text" autocomplete="off" placeholder="用户名"  name="user_id"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">密码</label>
+				<div class="input-icon">
+					<i class="fa fa-lock"></i>
+					<input class="form-control placeholder-no-fix" id="password" type="password" autocomplete="off" placeholder="密码"  name="password"/>
+				</div>
+			</div>
+			<div class="form-actions">
+				<label class="checkbox">
+				<input type="checkbox" id="remember_login" name="remember_login" value="1"/>记住密码
+				</label>
+				<button id='loginck' name='loginck' type="button" class="btn green pull-right" >
+				 <span id="logintip">登陆</span><i class="m-icon-swapright m-icon-white"></i>
+				</button>            
+			<div id="error_tip" align="left"style="color:red"><font  id="error_tip" ></font></div>
+			</div>
+			
+			
+			
+			<div class="forget-password">
+				<h4>忘记密码? 点击<a href="javascript:;"  id="forget-password">这里</a></h4>
+			</div>
+			<div class="create-account">
+				<p>
+					<h4><a href="javascript:;" id="register-btn" >个人注册</a></h4>
+				</p>
+			</div>
+			
+			
+			
+		</form>
+		<!-- END LOGIN FORM -->   
+		
+		     
+		<!-- BEGIN FORGOT PASSWORD FORM -->
+		<form id="forgetform" class="forget-form" action="index/forgot" method="post">
+			<h3 >忘记密码 ?</h3>
+			<p>输入注册使用的Email</p>
+			<div class="form-group">
+				<div class="input-icon">
+					<i class="fa fa-envelope"></i>
+					<input id="forgot_email" class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" />
+				</div>
+			</div>
+			<div class="form-actions">
+			<div  align="left"style="color:red"><font  id="forgot_tip" > </font>&nbsp;</div>
+				<button type="button" id="back-btn" class="btn">
+				<i class="m-icon-swapleft"></i> 返回
+				</button>
+				
+				<button id='forgot' name='forgot' type="button" class="btn green pull-right" >
+				 <span id='fsubmit_tip'>提交</span><i class="m-icon-swapright m-icon-white"></i>
+				</button>           
+			</div>
+		</form>
+		
+		
+		
+		<!-- END FORGOT PASSWORD FORM -->
+		<!-- BEGIN REGISTRATION FORM -->
+		<form id="regform" class="register-form" action="#" method="post">
+			<h3 >注册信息</h3>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">姓名</label>
+				<div class="input-icon">
+					<i class="fa fa-font"><font color="red">*</font></i>
+					<input class="form-control placeholder-no-fix" type="text" placeholder="姓名" id="res_username" name="res_username"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+				<label class="control-label visible-ie8 visible-ie9">邮箱</label>
+				<div class="input-icon">
+					<i class="fa fa-envelope"><font color="red">*</font></i>
+					<input class="form-control placeholder-no-fix" type="text" placeholder="邮箱" id="res_email" name="res_email"/>
+				</div>
+			</div>
+			<p>输入你的登陆使用信息</p>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">工号</label>
+				<div class="input-icon">
+					<i class="fa fa-user"><font color="red">*</font></i>
+					<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" id="res_user_id" name="res_user_id"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">密码</label>
+				<div class="input-icon">
+					<i class="fa fa-lock"><font color="red">*</font></i>
+					<input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="res_password" placeholder="密码" id="res_password" name="res_password"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">重复密码</label>
+				<div class="controls">
+					<div class="input-icon">
+						<i class="fa fa-check"><font color="red">*</font></i>
+						<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="重复密码" id="res_rpassword" name="res_rpassword"/>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>
+				<input type="checkbox" id="mustagree" name="mustagree"/> 我已仔细阅读并接受注册条款</a>
+				</label>  
+			</div>
+			<div  align="left"style="color:red"><font  id="res_tip" > </font>&nbsp;</div>
+			<div class="form-actions">
+				<button id="register-back-btn" type="button" class="btn">
+				<i class="m-icon-swapleft"></i>  返回
+				</button>
+				<button id="resck" name="resck" type="button"  class="btn green pull-right">
+				<span id="sign_tip">注册</span> <i class="m-icon-swapright m-icon-white"></i>
+				</button>            
+			</div>
+		</form>
+		<!-- END REGISTRATION FORM -->
+	</div>
+	<!-- END LOGIN -->
+	<!-- BEGIN COPYRIGHT -->
+	<div class="copyright">
+		2013 &copy; songgl wugy chenghan zhoujx 
+	</div>
+	<!-- END COPYRIGHT -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->   
+	<!--[if lt IE 9]>
+	<script src="plugins/respond.min.js"></script>
+	<script src="plugins/excanvas.min.js"></script> 
+	<![endif]-->   
+	<!--<script src="../../plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+	<script src="../../plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+	<script src="../../plugins/jquery.blockui.min.js" type="text/javascript"></script>  -->
+	<script src="../../plugins/jquery.cookie.min.js" type="text/javascript"></script>
+	<script src="../../plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+	<!-- END CORE PLUGINS -->
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	<script type="text/javascript" src="../../plugins/select2/select2.min.js"></script>     
+	<!-- END PAGE LEVEL PLUGINS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="../../scripts/app.js" type="text/javascript"></script>
+	<!-- END PAGE LEVEL SCRIPTS --> 
+	<script>
+		jQuery(document).ready(function() {     
+		  App.init();
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

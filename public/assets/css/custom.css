@@ -1,0 +1,36 @@
+/* here you can put your own css to customize and override the theme */
+/*
+.row_selected{
+	font-size:18px;
+	font-weight:bold;
+	color:red;
+}
+*/
+.checkbox_div{
+	display:inline-block;
+	border:1px solid #93C3F0;
+	margin:20px;
+	padding:2px;
+	width:250px;
+	float: left;   //当子元素个数不同时，解决水平对齐
+}
+.group_div{
+	display:inline-block;
+	border:1px solid #93C3F0;
+	/*margin:20px;*/
+	padding:2px;
+	width:250px;
+	/*float: left;*/
+	float: right;
+}
+.group_div_title{
+	display: inline-block;;
+	border: 1px solid #93C3F0;
+	padding: 0px;
+	margin: 10px;
+	width: 250px
+	float: left;
+}
+.title_checkbox{
+		background:#93C3F0;
+}

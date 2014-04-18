@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.0.2
+Version: 1.5.4
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>Metronic | Form Stuff - Form Components</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<meta name="MobileOptimized" content="320">
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->          
+	<link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../../plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<!-- END GLOBAL MANDATORY STYLES -->
+	<!-- BEGIN PAGE LEVEL STYLES -->
+	<link rel="stylesheet" type="text/css" href="../../plugins/bootstrap-fileupload/bootstrap-fileupload.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/gritter/css/jquery.gritter.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/select2/select2_metro.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/clockface/css/clockface.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/bootstrap-datepicker/css/datepicker.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/bootstrap-timepicker/compiled/timepicker.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/bootstrap-colorpicker/css/colorpicker.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/bootstrap-datetimepicker/css/datetimepicker.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/jquery-multi-select/css/multi-select.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/bootstrap-switch/static/stylesheets/bootstrap-switch-metro.css"/>
+	<link rel="stylesheet" type="text/css" href="../../plugins/jquery-tags-input/jquery.tagsinput.css" />
+	<link rel="stylesheet" type="text/css" href="../../plugins/bootstrap-markdown/css/bootstrap-markdown.min.css">
+	<!-- END PAGE LEVEL STYLES -->
+	<!-- BEGIN THEME STYLES --> 
+	<link href="../../css/style-metronic.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/plugins.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="../../css/custom.css" rel="stylesheet" type="text/css"/>
+	<!-- END THEME STYLES -->
+	<link rel="shortcut icon" href="favicon.ico" />
+	
+	<!-- uploadify css -->
+	<link rel="stylesheet" type="text/css" href="../../uploadify/uploadify.css">
+	<!-- uploadify -->
+	<script src="../../plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<!-- 
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	 -->
+	
+	<script src="../../uploadify/jquery.uploadify.min.js" type="text/javascript"></script>   
+	
+	<style type="text/css">
+	body{
+		 background-color: #FFFFFF !important;
+	}
+
+	.uploadify-button {
+	        background-color: transparent;
+	        border: none;
+	        padding: 0;
+	    }
+
+    .uploadify:hover .uploadify-button {
+        background-color: transparent;
+    }
+</style>
+<script type="text/javascript">
+	<?php $timestamp = time();?>
+	$(function() {
+	
+		$("#start_upload").click(function (){
+			//var gameVersionId = $("#gameVersion").val();
+			//$('#file_upload').uploadify('settings','formData',{'gameVersionId': gameVersionId,'task_id':});
+			$('#file_upload').uploadify('upload','*');
+		});
+		$('#file_upload').uploadify({
+			'auto'     : false,     //不自动上传
+			'multi'    : true,     //多文件上传
+			'buttonText' : '选择Excel文件...',  //文本按钮
+			'cancelImg' : '../../uploadify/uploadify-cancel.png',
+			'fileTypeDesc' : 'Excel Files',
+	        'fileTypeExts' : '*.xls',
+			'removeCompleted' : true,  //不自动删除上传成功的文件，继续在页面显示
+			'formData'     : {
+				'timestamp' : '<?php echo $timestamp;?>',
+				'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+			},
+			'swf'      : '../../uploadify/uploadify.swf',
+			'uploader' : 'excelinput',     //交互路径
+			//'checkExisting' : 'checkFileExsit',  //检查文件是否在服务器端存在
+			'onUploadSuccess' : function(file, data, response) {
+					if(data != 0){
+						$("#errorText").css({display:"block"});
+						var errorMsg = "<font color=\"red\">"+file.name+data+"</font><br/>";
+						$("#errorTip").append(errorMsg);
+					}
+						
+				
+			},
+			
+		});
+		
+	});
+</script>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body>
+		<div class="www">
+			<h3 class="page-title">
+
+				&nbsp;&nbsp;&nbsp;Test Case <small>excel input</small>
+			</h3>
+		
+
+		<div class="page-content" style="margin-left: 0; margin-bottom:0;padding:0 0 0 0 ;">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->               
+			
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN PORTLET-->   
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption"><i class="fa fa-reorder"></i>Excel Input
+							
+							</div> 
+							<!--<div class="actions">
+								<a id="importexcel" class="btn blue" href="../../case/testcase/showtcplan">
+									<i class="fa fa-arrow-circle-o-right"></i>
+										Show All Excel
+								</a>
+								 <a href="../../case/testcase/showtcplan">显示所有数据</a> 
+							</div>-->
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+								<form>
+									<div   align="left" style="margin:0 0 0 30%;">
+									
+										<span id="errorText" style="display: none"><font color="red">错误提示:</font></span><span id="errorTip"></span>
+									</div>
+									<div id="queue"></div>
+									<div align="left" style="margin:0 0 0 30%;">
+										<span id='upload'><font color="bule"  size="5"> &nbsp;</font><input id="file_upload" name="file_upload" type="file"></span>
+									</div>
+									<div align="left" style="with:20px;height:20;bgcolor:blue;margin:0 0 0 30%;">
+									<!-- 
+										<a href="javascript:$('#file_upload').uploadify('upload','*')">Upload Files</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="javascript:$('#file_upload').uploadify('cancel', '*')">Cancel</a>
+									 -->
+									  <span id="uploadfile" class="btn blue start">
+														<i class="fa fa-upload"></i>
+														<a href="#"  id="start_upload">Start upload</a>
+													
+									  </span>
+									  <span id="cancel" class="btn yellow cancel">
+											<i class="fa fa-ban"></i>
+											<a href="javascript:$('#file_upload').uploadify('cancel', '*')">Cancel upload</a>
+									 </span>
+									</div>
+								</form>
+															
+							<!-- END FORM-->
+</div>
+					</div>
+					<!-- END PORTLET-->
+				</div>
+			</div>
+		 
+			<!-- END PAGE CONTENT-->   
+		</div>
+		
+	
+	</div>
+</body>
+<!-- END BODY -->
+</html>

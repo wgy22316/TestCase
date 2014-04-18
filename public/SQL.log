@@ -1,0 +1,1 @@
+select tc_id,title,Initial_condition,procedures,expected_result from tc_testcase where case_v_id=179 order by tc_id asc limit 0,50
